@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LOTR App</string>
+    <string name="type_your_name_et">Your name</string>
+    <string name="enter">enter</string>
 </resources>
