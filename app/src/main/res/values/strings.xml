@@ -6,4 +6,6 @@
     <string name="movies">Movies</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="quotes">Quotes</string>
+    <string name="books">Books</string>
 </resources>
