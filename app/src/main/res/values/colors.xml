@@ -13,4 +13,8 @@
     <color name="secondaryDarkColor">#00251a</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
+
+    <color name="yellow">#fec107</color>
+    <color name="grey">#757575</color>
+    <color name="light_grey">#9e9e9e</color>
 </resources>

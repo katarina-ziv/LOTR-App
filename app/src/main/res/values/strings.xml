@@ -2,4 +2,8 @@
     <string name="app_name">LOTR App</string>
     <string name="type_your_name_et">Your name</string>
     <string name="enter">enter</string>
+    <string name="home">Home</string>
+    <string name="movies">Movies</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
