@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.lotrapp.components.home.HomePageFragment"
-        android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" >
+        android:label="Home Page"
+        tools:layout="@layout/fragment_home_page">
         <action
             android:id="@+id/action_homePageFragment_to_singleMovieFragment"
             app:destination="@id/singleMovieFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.example.lotrapp.components.movies.MoviesFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movies" >
+        android:label="Movies"
+        tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/action_movieFragment_to_singleMovieFragment"
             app:destination="@id/singleMovieFragment" />
@@ -26,16 +26,16 @@
     <fragment
         android:id="@+id/quotesFragment"
         android:name="com.example.lotrapp.components.quotes.QuotesFragment"
-        android:label="fragment_quotes"
+        android:label="Quotes"
         tools:layout="@layout/fragment_quotes" />
     <fragment
         android:id="@+id/singleMovieFragment"
         android:name="com.example.lotrapp.components.singleMovie.SingleMovieFragment"
-        android:label="fragment_single_movie"
+        android:label="Movie"
         tools:layout="@layout/fragment_single_movie" />
     <fragment
         android:id="@+id/booksFragment"
         android:name="com.example.lotrapp.components.books.BooksFragment"
-        android:label="fragment_books"
+        android:label="Books"
         tools:layout="@layout/fragment_books" />
 </navigation>
