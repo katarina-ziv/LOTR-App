@@ -25,7 +25,7 @@ android {
 
     }
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -69,5 +69,11 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 
+    //Paging
+    implementation 'androidx.paging:paging-common-ktx:3.1.1'
+    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
+
+    //Moshi
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
 
 }
