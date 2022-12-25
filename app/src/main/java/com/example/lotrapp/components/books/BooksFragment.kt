@@ -1,32 +1,92 @@
 package com.example.lotrapp.components.books
 
-import androidx.lifecycle.ViewModelProvider
+import BooksViewModel
 import android.os.Bundle
+import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrapp.R
+import com.example.lotrapp.activities.MainActivity
+import com.example.lotrapp.activities.MainViewModel
+import com.example.lotrapp.adapters.BooksAdapter
+import com.example.lotrapp.databinding.FragmentBooksBinding
+import com.example.lotrapp.services.utils.Resource
+
 
 class BooksFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BooksFragment()
-    }
+    private lateinit var binding: FragmentBooksBinding
+    lateinit var viewModel: MainViewModel
+    lateinit var bookAdapter: BooksAdapter
 
-    private lateinit var viewModel: BooksViewModel
+
+    val TAG = "BooksFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_books, container, false)
+        binding = FragmentBooksBinding.inflate(layoutInflater,container,false)
+        Log.i("BooksFragment","onCreateView")
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as MainActivity).viewModel
+        setupRecyclerView()
+
+        viewModel.books.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is Resource.Success ->{
+                    hideProgressBar()
+                    response.data?.let { booksResponse ->
+                        bookAdapter.differ.submitList(booksResponse.docs)
+
+                    }
+                }
+                is Resource.Error ->{
+                    hideProgressBar()
+                    response.message?.let { message ->
+
+                    }
+                }
+                is Resource.Loading ->{
+                    showProgressBar()
+                }
+            }
+
+        })
     }
+
+    private fun hideProgressBar(){
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar(){
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun setupRecyclerView(){
+        bookAdapter = BooksAdapter()
+        binding.booksRv.apply {
+            adapter = bookAdapter
+            layoutManager = LinearLayoutManager(activity)
+            Log.i("BooksFragment","rec view")
+        }
+    }
+    private fun instantiateUi() {
+
+    }
+
+    private fun observeViewModel() {
+
+    }
+
 
 }

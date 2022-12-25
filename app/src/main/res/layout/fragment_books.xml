@@ -6,14 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".components.books.BooksFragment"
     >
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/books_Rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_book"
-        android:orientation="vertical"
         android:layout_margin="8dp"
-        />
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_book" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -24,6 +30,8 @@
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/books_Rv" />
+
+    
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

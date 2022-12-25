@@ -1,7 +1,7 @@
 package com.example.lotrapp.models
 
-data class BookResponse(
-    val books: List<Book>,
+data class BaseResponse<T>(
+    val docs: List<T>,
     val limit: Int,
     val offset: Int,
     val page: Int,

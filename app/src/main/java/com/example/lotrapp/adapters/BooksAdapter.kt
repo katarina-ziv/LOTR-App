@@ -17,6 +17,7 @@ class BooksAdapter : RecyclerView.Adapter<BooksAdapter.BookViewHolder>() {
 
 inner class BookViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)
 
+
     private val differCallBack = object : DiffUtil.ItemCallback<Book>(){
         override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
             return oldItem._id == newItem._id
@@ -26,8 +27,8 @@ inner class BookViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)
             return oldItem == newItem
         }
     }
-
     val differ = AsyncListDiffer(this,differCallBack)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         return BookViewHolder(
@@ -42,9 +43,13 @@ inner class BookViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview)
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         val book = differ.currentList[position]
         holder.itemView.findViewById<TextView>(R.id.book_title).text = book.name
+        val txt = holder.itemView.findViewById<TextView>(R.id.book_title).text
+        Log.i("Adapter","$txt")
     }
 
     override fun getItemCount(): Int {
+        Log.i("Adapter","${differ.currentList.size}")
         return differ.currentList.size
+
     }
 }

@@ -1,25 +1,22 @@
 package com.example.lotrapp.activities
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.system.Os.close
 import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.lotrapp.R
 import com.example.lotrapp.databinding.ActivityMainBinding
+import com.example.lotrapp.serviceLayer.Repository
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,11 +26,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout : DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val repository = Repository()
+        val viewModelProviderFactory = MainViewModelProviderFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(MainViewModel::class.java)
+
+        Log.i("MainView","onCreate MainView")
 
         val navView = binding.navView
         val headerView = navView.getHeaderView(0)
