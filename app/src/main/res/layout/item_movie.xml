@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="15dp"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    >
+
+    <TextView
+        android:id="@+id/movieNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Fellowship of the Ring"
+        android:layout_margin="8dp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/runtimeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Runtime"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/movieNameTv"
+        app:layout_constraintTop_toBottomOf="@id/movieNameTv"
+        />
+
+    <TextView
+        android:id="@+id/scoreTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Score"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/runtimeTv"
+        app:layout_constraintTop_toBottomOf="@id/runtimeTv"
+        android:layout_marginBottom="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
