@@ -8,9 +8,11 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:padding="8dp"
+    android:backgroundTint="@color/primaryColor"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="15dp"
+    app:cardElevation="5dp"
+    android:outlineSpotShadowColor="@color/white"
     >
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +29,7 @@
         android:layout_margin="8dp"
         style="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -34,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Runtime"
+        android:textColor="@color/white"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@id/movieNameTv"
         app:layout_constraintTop_toBottomOf="@id/movieNameTv"
@@ -44,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Score"
+        android:textColor="@color/white"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@id/runtimeTv"
         app:layout_constraintTop_toBottomOf="@id/runtimeTv"
