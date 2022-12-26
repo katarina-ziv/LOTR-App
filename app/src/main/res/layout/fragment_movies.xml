@@ -23,16 +23,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_margin="8dp"
             android:textSize="16dp"
             android:paddingRight="8dp"
-            tools:text="5 Titles"/>
+            android:text="Titles"/>
         <TextView
             android:id="@+id/sortedByTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_margin="8dp"
             android:textSize="16dp"
-            tools:text="Sorted by Newest"/>
+            android:text="Sorted by "/>
 
         <View
             android:layout_width="0dp"
@@ -42,7 +44,6 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="center"
             android:src="@drawable/ic_sort"
             app:tint="@color/white"
             android:backgroundTint="@color/primaryDarkColor"
