@@ -1,16 +1,14 @@
 package com.example.lotrapp.components.books
 
-import BooksViewModel
+
 import android.os.Bundle
 import android.util.Log
-
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lotrapp.R
 import com.example.lotrapp.activities.MainActivity
 import com.example.lotrapp.activities.MainViewModel
 import com.example.lotrapp.adapters.BooksAdapter
@@ -31,8 +29,8 @@ class BooksFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBooksBinding.inflate(layoutInflater,container,false)
-        Log.i("BooksFragment","onCreateView")
+        binding = FragmentBooksBinding.inflate(layoutInflater, container, false)
+        Log.i("BooksFragment", "onCreateView")
         return binding.root
     }
 
@@ -42,21 +40,21 @@ class BooksFragment : Fragment() {
         setupRecyclerView()
 
         viewModel.books.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success ->{
+            when (response) {
+                is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let { booksResponse ->
                         bookAdapter.differ.submitList(booksResponse.docs)
 
                     }
                 }
-                is Resource.Error ->{
+                is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
 
                     }
                 }
-                is Resource.Loading ->{
+                is Resource.Loading -> {
                     showProgressBar()
                 }
             }
@@ -64,29 +62,21 @@ class BooksFragment : Fragment() {
         })
     }
 
-    private fun hideProgressBar(){
+    private fun hideProgressBar() {
         binding.progressBar.visibility = View.INVISIBLE
     }
 
-    private fun showProgressBar(){
+    private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         bookAdapter = BooksAdapter()
         binding.booksRv.apply {
             adapter = bookAdapter
             layoutManager = LinearLayoutManager(activity)
-            Log.i("BooksFragment","rec view")
+            Log.i("BooksFragment", "rec view")
         }
     }
-    private fun instantiateUi() {
-
-    }
-
-    private fun observeViewModel() {
-
-    }
-
 
 }
