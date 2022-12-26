@@ -6,5 +6,6 @@ class Repository {
 
     suspend fun getBooks(page: Int) = RetrofitInstance.api.getBooks(page)
 
+    suspend fun getMovies(token : String) = RetrofitInstance.api.getMovies(token)
 
 }
