@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrapp.R
 import com.example.lotrapp.activities.MainActivity
@@ -39,6 +40,13 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
+        movieAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("movie",it)
+            }
+            findNavController().navigate(R.id.action_movieFragment_to_singleMovieFragment,bundle)
+        }
         viewModel.movies.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
