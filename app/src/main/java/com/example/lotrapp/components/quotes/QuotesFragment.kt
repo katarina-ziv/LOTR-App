@@ -14,7 +14,7 @@ class QuotesFragment : Fragment() {
         fun newInstance() = QuotesFragment()
     }
 
-    private lateinit var viewModel: QuotesViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +23,5 @@ class QuotesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_quotes, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(QuotesViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

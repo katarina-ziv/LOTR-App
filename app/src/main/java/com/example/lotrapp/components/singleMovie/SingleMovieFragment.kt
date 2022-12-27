@@ -14,7 +14,6 @@ class SingleMovieFragment : Fragment() {
         fun newInstance() = SingleMovieFragment()
     }
 
-    private lateinit var viewModel: SingleMovieViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +22,6 @@ class SingleMovieFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_single_movie, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SingleMovieViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
