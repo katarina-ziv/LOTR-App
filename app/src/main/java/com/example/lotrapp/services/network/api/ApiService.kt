@@ -3,6 +3,7 @@ package com.example.lotrapp.services.network.api
 import com.example.lotrapp.models.BaseResponse
 import com.example.lotrapp.models.Book
 import com.example.lotrapp.models.Movie
+import com.example.lotrapp.models.Quote
 import com.example.lotrapp.services.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -23,4 +24,9 @@ interface ApiService {
         apiKey: String = API_KEY
     ): Response<BaseResponse<Movie>>
 
+    @GET("quote/")
+    suspend fun getQuotes(
+        @Header("Authorization")
+        apiKey: String = API_KEY
+    ) : Response<BaseResponse<Quote>>
 }
