@@ -27,6 +27,11 @@ interface ApiService {
     @GET("quote/")
     suspend fun getQuotes(
         @Header("Authorization")
-        apiKey: String = API_KEY
+        apiKey: String = API_KEY,
+        @Query("page")
+        page: Int = 1,
+        @Query("pageSize")
+        pages : Int = 3
     ) : Response<BaseResponse<Quote>>
 }
+
