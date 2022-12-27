@@ -44,9 +44,18 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.runtimeTv).text = movie.runtimeInMinutes?.toDuration(DurationUnit.MINUTES).toString()
         val score = movie.rottenTomatoesScore?.roundToInt().toString()+"%"
         holder.itemView.findViewById<TextView>(R.id.scoreTv).text = score
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let { it( movie) }
+        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private var onItemClickListener : ((Movie)-> Unit)? = null
+
+    fun setOnItemClickListener(listener : (Movie) -> Unit){
+        onItemClickListener = listener
     }
 }

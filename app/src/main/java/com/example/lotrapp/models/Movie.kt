@@ -1,5 +1,8 @@
 package com.example.lotrapp.models
 
+import com.example.lotrapp.R
+import java.io.Serializable
+
 data class Movie(
     var _id: String,
     var name: String,
@@ -8,7 +11,7 @@ data class Movie(
     var academyAwardNominations: Int?,
     var academyAwardWins: Int?,
     var rottenTomatoesScore: Double?,
-    var image : String?,
-    var backgroundImage: String?,
+    var image : Int?,
+    var backgroundImage: Int?,
     var description : String?
-)
+) : Serializable
