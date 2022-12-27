@@ -32,7 +32,11 @@
         android:id="@+id/singleMovieFragment"
         android:name="com.example.lotrapp.components.singleMovie.SingleMovieFragment"
         android:label="Movie"
-        tools:layout="@layout/fragment_single_movie" />
+        tools:layout="@layout/fragment_single_movie" >
+        <argument
+            android:name="movie"
+            app:argType="com.example.lotrapp.models.Movie" />
+    </fragment>
     <fragment
         android:id="@+id/booksFragment"
         android:name="com.example.lotrapp.components.books.BooksFragment"
