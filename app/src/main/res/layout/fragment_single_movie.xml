@@ -1,13 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryDarkColor"
     tools:context=".components.singleMovie.SingleMovieFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/movieBackgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="test fragment single movie" />
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:alpha="0.60"
+        android:scaleType="fitStart"
+        android:src="@drawable/movie2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/movieImage"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="46dp"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:padding="4dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/movie1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movieNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movieImage"
+        tools:text="The Fellowship of the Ring" />
+
+    <TextView
+        android:id="@+id/scoreTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Score: "
+        android:textColor="@color/light_grey"
+        app:layout_constraintStart_toStartOf="@id/movieNameTv"
+        app:layout_constraintTop_toBottomOf="@id/movieNameTv" />
+
+    <TextView
+        android:id="@+id/scoreTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        tools:text="90%"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/scoreTitleTv"
+        app:layout_constraintStart_toStartOf="@id/movieNameTv"
+        app:layout_constraintTop_toBottomOf="@id/scoreTitleTv" />
+
+    <TextView
+        android:id="@+id/awardsTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Awards: "
+        android:textColor="@color/light_grey"
+        app:layout_constraintEnd_toEndOf="@id/movieNameTv"
+        app:layout_constraintTop_toTopOf="@id/budgetTitleTv" />
+
+    <TextView
+        android:id="@+id/awardsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="25"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/scoreTv"
+        app:layout_constraintEnd_toEndOf="@+id/awardsTitleTv"
+        app:layout_constraintStart_toStartOf="@+id/awardsTitleTv" />
+
+    <TextView
+        android:id="@+id/budgetTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget:"
+        android:textColor="@color/light_grey"
+        app:layout_constraintEnd_toStartOf="@id/awardsTitleTv"
+        app:layout_constraintStart_toEndOf="@id/scoreTitleTv"
+        app:layout_constraintTop_toBottomOf="@id/movieNameTv"
+        app:layout_constraintTop_toTopOf="@id/scoreTitleTv" />
+
+    <TextView
+        android:id="@+id/budgetTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="200 eura"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/scoreTv"
+        app:layout_constraintEnd_toEndOf="@+id/budgetTitleTv"
+        app:layout_constraintStart_toStartOf="@+id/budgetTitleTv"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/overviewCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:backgroundTint="@color/primaryColor"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="@color/white"
+        android:orientation="vertical"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreTv">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/movieOverviewTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Overview:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf=""
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/movieOverviewTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/movieOverviewTitleTv"
+                app:layout_constraintTop_toBottomOf="@id/movieOverviewTitleTv"
+                tools:text="Dobar film basbas" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
