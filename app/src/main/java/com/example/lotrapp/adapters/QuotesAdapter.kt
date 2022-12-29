@@ -53,8 +53,9 @@ class QuotesAdapter : RecyclerView.Adapter<QuotesAdapter.QuoteViewHolder>() {
         val quote = differ.currentList[position]
         holder.itemView.apply {
             findViewById<TextView>(R.id.quoteTv).text = quote.dialog
-            findViewById<TextView>(R.id.charNameTv).text = quote.character
-            findViewById<TextView>(R.id.movieNameTv).text = quote.movie
+            //TODO dodati
+//          findViewById<TextView>(R.id.charNameTv).text = quote.character
+//           findViewById<TextView>(R.id.movieNameTv).text = quote.movie
         }
     }
 
