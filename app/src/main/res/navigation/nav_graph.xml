@@ -36,6 +36,9 @@
         <argument
             android:name="movie"
             app:argType="com.example.lotrapp.models.Movie" />
+        <action
+            android:id="@+id/action_singleMovieFragment_to_moviesFragment"
+            app:destination="@id/moviesFragment" />
     </fragment>
     <fragment
         android:id="@+id/booksFragment"
