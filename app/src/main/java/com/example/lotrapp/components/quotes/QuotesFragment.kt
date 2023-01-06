@@ -6,20 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lotrapp.R
 import com.example.lotrapp.activities.MainActivity
 import com.example.lotrapp.activities.MainViewModel
 import com.example.lotrapp.adapters.QuotesAdapter
 import com.example.lotrapp.databinding.FragmentQuotesBinding
 import com.example.lotrapp.services.utils.Resource
+import kotlinx.android.synthetic.main.item_quote.*
 
 class QuotesFragment : Fragment() {
 
 
     private lateinit var binding: FragmentQuotesBinding
     lateinit var viewModel: MainViewModel
-    lateinit var quotesAdapter: QuotesAdapter
+    private lateinit var quotesAdapter: QuotesAdapter
 
     val TAG = "QuotesFragment"
 
@@ -35,6 +39,7 @@ class QuotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
 
         viewModel.quotes.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
@@ -67,10 +72,11 @@ class QuotesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        quotesAdapter = QuotesAdapter()
+        quotesAdapter = QuotesAdapter(viewModel::saveQuote)
         binding.quotesRv.apply {
             adapter = quotesAdapter
             layoutManager = LinearLayoutManager(activity)
+
         }
     }
 
