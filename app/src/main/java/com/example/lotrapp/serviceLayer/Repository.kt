@@ -1,23 +1,25 @@
 package com.example.lotrapp.serviceLayer
 
-import androidx.lifecycle.LiveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+
 import com.example.lotrapp.models.Quote
-import com.example.lotrapp.services.network.api.ApiService
-import com.example.lotrapp.services.network.api.RetrofitInstance
 import com.example.lotrapp.services.network.api.RetrofitInstance.Companion.api
-import kotlinx.coroutines.flow.Flow
+import com.example.lotrapp.services.persistence.database.QuoteDatabase
 
-class Repository {
-    private val apiService = api
-    suspend fun getBooks(page: Int) = RetrofitInstance.api.getBooks(page)
 
-    suspend fun getMovies() = RetrofitInstance.api.getMovies()
+class Repository(
+    private val quoteDatabase: QuoteDatabase
+) {
+    suspend fun getBooks(page: Int) = api.getBooks(page)
 
-    suspend fun getQuotes() = RetrofitInstance.api.getQuotes()
+    suspend fun getMovies() = api.getMovies()
+
+    suspend fun getQuotes() = api.getQuotes()
+
+    suspend fun upsert(quote : Quote) = quoteDatabase.getQuoteDao().upsert(quote)
+
+    fun getSavedQuotes() = quoteDatabase.getQuoteDao().getAllQuotes()
+
+    suspend fun deleteQuote(quote: Quote) = quoteDatabase.getQuoteDao().deleteQuote(quote)
 
     //TODO apply paging library
 //    fun fetchQuotes(): LiveData<PagingData<Quote>> {
