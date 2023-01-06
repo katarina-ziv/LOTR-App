@@ -1,12 +1,9 @@
 package com.example.lotrapp.activities
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.example.lotrapp.models.BaseResponse
 import com.example.lotrapp.models.Book
 import com.example.lotrapp.models.Movie
@@ -25,7 +22,6 @@ class MainViewModel(val repository: Repository) : ViewModel() {
 
 
     //BOOKS
-
     fun getBooks(page: Int) = viewModelScope.launch {
         books.postValue(Resource.Loading())
         val response = repository.getBooks(page)
@@ -70,6 +66,18 @@ class MainViewModel(val repository: Repository) : ViewModel() {
             }
         }
         return Resource.Error(response.message())
+    }
+
+    //DATABASE FUNCTIONS
+    fun saveQuote(quote: Quote) = viewModelScope.launch {
+        repository.upsert(quote)
+
+    }
+
+    fun getSavedQuotes() = repository.getSavedQuotes()
+
+    fun deleteQuote(quote :Quote) = viewModelScope.launch {
+        repository.deleteQuote(quote)
     }
 
 
